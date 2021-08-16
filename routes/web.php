@@ -18,5 +18,7 @@ Route::get('/', function () {
 });
 
 Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
+Route::middleware('auth')->namespace('Admin')->name('admin.')->prefix('admin')->group(function () {
+    // Definire qui le rotte per il back office
+    Route::get('/home', 'HomeController@index')->name('home');
+});
